@@ -12,7 +12,7 @@ pub fn MPMCQueue(comptime T: type) type {
         not_empty: std.Thread.Condition = .{},
         not_full: std.Thread.Condition = .{},
 
-        pub fn init(allocator: *std.mem.Allocator, capacity: usize) !*Self {
+        pub fn init(allocator: std.mem.Allocator, capacity: usize) !*Self {
             const self = try allocator.create(Self);
             self.* = Self{
                 .buffer = try allocator.alloc(?T, capacity),
