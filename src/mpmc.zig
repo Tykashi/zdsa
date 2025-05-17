@@ -29,7 +29,7 @@ pub fn MPMCQueue(comptime T: type) type {
             return self;
         }
 
-        pub fn deinit(self: *Self, allocator: *std.mem.Allocator) void {
+        pub fn deinit(self: *Self, allocator: std.mem.Allocator) void {
             allocator.free(self.buffer);
             allocator.destroy(self);
         }
